@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Loading from "../Components/Loading";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const Installation = () => {
   const [loading, setLoading] = useState(true);
@@ -87,7 +87,9 @@ const Installation = () => {
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value)}
               >
-                <option value="">Sort By Size</option>
+                <option value="" disabled>
+                  Sort By Size
+                </option>
                 <option value="high-low">High-Low</option>
                 <option value="low-high">Low-High</option>
               </select>

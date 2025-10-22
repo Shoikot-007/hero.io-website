@@ -68,7 +68,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://github.com/YOUR_USERNAME"
+                href="https://github.com/Shoikot-007"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center transition-colors duration-300"
@@ -122,12 +122,12 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://github.com/YOUR_USERNAME"
+                  href="https://github.com/Shoikot-007"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
                 >
-                  GitHub Repository
+                  GitHub
                 </a>
               </li>
               <li>

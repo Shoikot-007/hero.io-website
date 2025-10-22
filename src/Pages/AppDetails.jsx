@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Loading from "../Components/Loading";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const AppDetails = () => {
   const { id } = useParams();
@@ -88,82 +88,66 @@ const AppDetails = () => {
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="container mx-auto px-4">
-        <div className="bg-white rounded-lg shadow-lg p-6 md:p-10 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex justify-center md:justify-start">
-              <div className="w-48 h-48 bg-gray-200 rounded-lg overflow-hidden">
+        <div className="bg-white rounded-lg shadow-lg p-6 md:p-10 mb-8 flex flex-col md:flex-row items-center md:items-start gap-10">
+          <div className="shrink-0">
+            <div className="w-40 h-40 md:w-80 md:h-80 bg-gray-200 rounded-lg overflow-hidden">
+              <img
+                src={app.image}
+                alt={app.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="flex-1 flex flex-col md:items-start items-center text-center md:text-left gap-4">
+            <h1 className="text-2xl md:text-4xl font-bold">{app.title}</h1>
+            <p className="text-purple-600 mb-4  text-lg">Developed by {app.companyName}</p>
+
+            <div className="flex justify-center md:justify-start gap-10">
+              <div className="flex flex-col items-center">
                 <img
-                  src={app.image}
-                  alt={app.title}
-                  className="w-full h-full object-cover"
+                  src="/icon-downloads.png"
+                  alt="Downloads"
+                  className="h-12 w-12 mb-1"
                 />
+                <p className="text-gray-600">Downloads</p>
+                <p className="text-xl md:text-3xl font-bold">
+                  {formatDownloads(app.downloads)}
+                </p>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/icon-ratings.png"
+                  alt="Rating"
+                  className="h-12 w-12 mb-1"
+                />
+                <p className="text-gray-600">Average Ratings</p>
+                <p className="text-xl md:text-3xl font-bold">{app.ratingAvg}</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/icon-review.png"
+                  alt="Reviews"
+                  className="h-12 w-12 mb-1"
+                />
+                <p className="text-gray-600">Total Reviews</p>
+                <p className="text-xl md:text-3xl font-bold">
+                  {formatReviews(app.reviews)}
+                </p>
               </div>
             </div>
 
-            <div className="md:col-span-2">
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">
-                {app.title}
-              </h1>
-              <p className="text-purple-600 mb-6">
-                Developed by {app.companyName}
-              </p>
-
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center">
-                  <div className="flex items-center justify-center mb-2">
-                    <img
-                      src="/icon-downloads.png"
-                      alt="Downloads"
-                      className="h-8 w-8"
-                    />
-                  </div>
-                  <p className="text-sm text-gray-600 mb-1">Downloads</p>
-                  <p className="text-xl md:text-2xl font-bold">
-                    {formatDownloads(app.downloads)}
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="flex items-center justify-center mb-2">
-                    <img
-                      src="/icon-ratings.png"
-                      alt="Rating"
-                      className="h-8 w-8"
-                    />
-                  </div>
-                  <p className="text-sm text-gray-600 mb-1">Average Ratings</p>
-                  <p className="text-xl md:text-2xl font-bold">
-                    {app.ratingAvg}
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="flex items-center justify-center mb-2">
-                    <img
-                      src="/icon-review.png"
-                      alt="Reviews"
-                      className="h-8 w-8"
-                    />
-                  </div>
-                  <p className="text-sm text-gray-600 mb-1">Total Reviews</p>
-                  <p className="text-xl md:text-2xl font-bold">
-                    {formatReviews(app.reviews)}
-                  </p>
-                </div>
-              </div>
-
-              <button
-                onClick={handleInstall}
-                disabled={isInstalled}
-                className={`btn btn-lg w-full md:w-auto ${
-                  isInstalled
-                    ? "btn-disabled bg-gray-400"
-                    : "btn-primary bg-green-500 hover:bg-green-600 border-none"
-                } text-white normal-case px-12`}
-              >
-                {isInstalled ? "Installed" : `Install Now (${app.size} MB)`}
-              </button>
-            </div>
+            <button
+              onClick={handleInstall}
+              disabled={isInstalled}
+              className={`btn btn-lg mt-4 md:mt-6 ${
+                isInstalled
+                  ? "btn-disabled bg-gray-400"
+                  : "btn-primary bg-green-500 hover:bg-green-600 border-none"
+              } text-white normal-case px-12`}
+            >
+              {isInstalled ? "Installed" : `Install Now (${app.size} MB)`}
+            </button>
           </div>
         </div>
 
